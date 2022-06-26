@@ -4,9 +4,10 @@
 
 body {
     margin: 0rem;
-    padding: 0;
+    padding: 0rem;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom right, white 0%, $primary-theme-light 70%);
 }
 
 h1,
@@ -23,10 +24,9 @@ li {
 }
 
 .app {
+    
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    background: linear-gradient(to bottom right, white 0%, $primary-theme-light 70%);
 
     @include tablet {
         flex-direction: row;
