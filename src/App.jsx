@@ -1,11 +1,20 @@
 import './App.scss';
-import Sidebar from './components/Sidebar/Sidebar';
-// import { BrowserRouter as Router, Route} from "react-router-dom";
+import WelcomePage from './pages/WelcomePage/WelcomePage';
+import LandingPage from './pages/LandingPage/LandingPage';
+import SignUpPage from './components/SignUpPage/SignUpPage';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
+
   return (
     <div className='app'>
-      <Sidebar />
+      <Router>
+        <Switch>
+          <Route path='/' exact component={LandingPage} />
+          <Route path='/profile' exact component={WelcomePage} />
+          <Route path="/register" component={SignUpPage} />
+        </Switch>
+      </Router>
     </div>
   );
 }

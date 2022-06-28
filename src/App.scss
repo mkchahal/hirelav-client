@@ -1,34 +1,16 @@
 @import '../src/styles/partials/typography';
 @import '../src/styles/partials/variables';
-@import '../src/styles/partials/mixins';
 
 body {
     margin: 0rem;
     padding: 0rem;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom right, white 0%, $primary-theme-light 70%);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-ul,
-li {
-    margin: 0rem;
-    padding: 0;
 }
 
 .app {
-    
+    height: 100vh;
     display: flex;
-    flex-direction: column;
-
-    @include tablet {
-        flex-direction: row;
-    }
+    align-items: center;
+    justify-content: center;
 }
