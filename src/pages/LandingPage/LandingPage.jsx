@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginForm from '../../components/LoginForm/LoginForm';
+import PublicJobs from '../../components/PublicJobs/PublicJobs';
 
 export default function LandingPage() {
 
@@ -14,6 +15,7 @@ export default function LandingPage() {
         <p>New User? SignUp Below</p>
         <Link to="/register"><button>Sign Up</button></Link>
       </div>
+      <PublicJobs />
     </>
   )
 }
