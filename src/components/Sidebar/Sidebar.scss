@@ -1,0 +1,103 @@
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/variables';
+
+.sidebar {
+    width: 100%;
+    background-color: $secondary-dark;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    margin: 0.5rem;
+
+    @include tablet {
+        width: 20%;
+        height: 100%;
+    }
+
+    &__profile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    &__badge {
+        padding: 0.3rem 1rem;
+        border-radius: 1rem;
+        font-weight: 500;
+        color: $font-light-color;
+        background-color: $primary-theme;
+        cursor: pointer;
+    }
+
+    &__avatar {
+        height: 7rem;
+        border-radius: 6rem;
+        margin-top: 20%;
+    }
+
+    &__name {
+        color: $font-light-color;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin: 0.8rem 0 0.5rem 0;
+    }
+
+    &__links-container {
+        box-sizing: border-box;
+        background-color: $primary-theme-dark;
+        margin: 1rem;
+        width: 90%;
+        border-radius: 2rem;
+    }
+
+    &__links {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        padding-top: 2rem;
+    }
+
+    &__link {
+        margin-left: 25%;
+        margin-bottom: 2rem;
+        display: flex;
+        gap: 1rem;
+        color: $secondary-light;
+        cursor: pointer;
+
+        & h3 {
+            font-weight: 300;
+        }
+
+        & svg {
+            font-size: 1.1rem;
+            margin-top: 3%;
+        }
+    }
+
+    &__contact {
+        width: 60%;
+        background-color: $secondary-dark;
+        color: $secondary-medium;
+        height: 20%;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        margin-bottom: 2rem;
+
+        & a {
+            color: $font-light-color;
+            text-decoration: none;
+        }
+
+        @include tablet {
+            margin: auto auto 2rem;
+        }
+
+    }
+
+}
