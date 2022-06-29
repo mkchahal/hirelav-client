@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './PublicJobs.scss';
 import axios from 'axios';
+import { Markup } from 'interweave';
 import { JOBS_URL } from '../../utils/APIUtils';
 
 export default function PublicJobs() {
@@ -22,14 +23,13 @@ export default function PublicJobs() {
             }
             {
                 jobs.map(job =>
-                <>
-                    <div className='card'>
+                    <div key={job.id} className='card'>
                         <h2>{job.title}</h2>
-                        <p>{job.description}</p>
+                        <Markup content={job.description.slice(0,300) + "......Read More"}/>
                         <button>Share</button>
                         <button>Apply</button>
                     </div>
-                </>)
+                )
             }
         </>
     )

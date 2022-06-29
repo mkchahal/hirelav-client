@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Badge } from 'react-bootstrap';
-// import { Button, Icon } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
 import { deleteJob, getAllJobs } from '../../utils/APIUtils';
+import { Markup } from 'interweave';
 import { FaPlus } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
@@ -23,20 +24,31 @@ export default function JobCards() {
 
     return (
         <>
-            {
-                jobs.map(job =>
-                    <Card key={job.id} border="secondary" style={{ width: '18rem' }}>
-                        <Card.Header>{job.title}</Card.Header> <Badge bg="success">{job.status}</Badge>
-                        <Card.Body>
-                            <Card.Title>Posted on {job.updated_at.slice(0, 10)}</Card.Title>
-                            <Card.Text>
-                                {job.description}
-                            </Card.Text>
-                            <Link to='/job/edit'><button>Edit</button></Link>
-                            <button onClick={() => handleDelete(job.id)}>Delete</button>
-                        </Card.Body>
-                    </Card>
-                )
+            {jobs.map(job =>
+                <Card key={job.id} border="secondary" style={{ width: '18rem' }}>
+                    <Card.Header>{job.title}</Card.Header> <Badge bg="success">{job.status}</Badge>
+                    <Card.Body>
+                        <Card.Title>Posted on {job.updated_at.slice(0, 10)}</Card.Title>
+                        <Card.Text>
+                            <Markup content={job.description.slice(0,300) + "......Read More"}/>
+                        </Card.Text>
+                        <Link to='/job/edit'>
+                            <Button animated='vertical'>
+                                <Button.Content hidden>Edit</Button.Content>
+                                <Button.Content visible>
+                                    <Icon name='edit' />
+                                </Button.Content>
+                            </Button>
+                        </Link>
+                        <Button animated='vertical' onClick={() => handleDelete(job.id)}>
+                            <Button.Content hidden>Delete</Button.Content>
+                            <Button.Content visible>
+                                <Icon name='delete' />
+                            </Button.Content>
+                        </Button>
+                    </Card.Body>
+                </Card>
+            )
             }
             <Link to='/job/add'>
                 <Card border="secondary" style={{ width: '18rem' }}>
