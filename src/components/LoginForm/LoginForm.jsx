@@ -1,7 +1,7 @@
 import './LoginForm.scss';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { AUTH_URL, getUserInfo } from '../../utils/APIUtlis';
+import { AUTH_URL, getUserInfo } from '../../utils/APIUtils';
 import axios from 'axios';
 
 function LoginForm(props) {

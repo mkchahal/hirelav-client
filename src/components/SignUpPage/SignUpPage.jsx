@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AUTH_URL } from '../../utils/APIUtlis';
+import { AUTH_URL } from '../../utils/APIUtils';
 import axios from 'axios';
 import '../LoginForm/LoginForm.scss';
 

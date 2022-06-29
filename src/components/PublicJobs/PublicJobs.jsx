@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './PublicJobs.scss';
 import axios from 'axios';
-import { JOBS_URL } from '../../utils/APIUtlis';
+import { JOBS_URL } from '../../utils/APIUtils';
 
 export default function PublicJobs() {
 

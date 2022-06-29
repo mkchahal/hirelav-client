@@ -2,10 +2,5 @@
 
 .profile {
     background: linear-gradient(to bottom right, white 0%, $primary-theme-light 70%);
-    display: flex;
-    flex-direction: column;
-
-    @include tablet {
-        flex-direction: row;
-    }
+    width: 100vw;
 }
