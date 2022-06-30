@@ -34,9 +34,7 @@ export default function JobCards() {
                     <Card.Header>{job.title}</Card.Header> <Badge bg="success">{job.status}</Badge>
                     <Card.Body>
                         <Card.Title>Posted on {job.updated_at.slice(0, 10)}</Card.Title>
-                        <Card.Text>
-                            <Markup content={job.description.slice(0,300) + "......Read More"}/>
-                        </Card.Text>
+                        <Markup content={job.description.slice(0,300) + "......Read More"}/>
                         <Link to='/job/edit'>
                             <Button animated='vertical'>
                                 <Button.Content hidden>Edit</Button.Content>
