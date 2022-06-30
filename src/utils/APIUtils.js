@@ -41,14 +41,4 @@ const getAllJobs = (token, setStatus) => {
         .catch(err => console.log(err))
 }
 
-const deleteJob = (token, id) => {
-    axios.delete(`${JOBS_URL}/${id}`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            },
-         })
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-}
-
-export { API_URL, AUTH_URL, JOBS_URL, APPLICATIONS_URL, getUserInfo, getAllApplications, getAllJobs, deleteJob };
+export { API_URL, AUTH_URL, JOBS_URL, APPLICATIONS_URL, getUserInfo, getAllApplications, getAllJobs };

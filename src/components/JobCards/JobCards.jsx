@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Badge } from 'react-bootstrap';
 import { Button, Icon } from 'semantic-ui-react';
-import { deleteJob, getAllJobs } from '../../utils/APIUtils';
+import { JOBS_URL, getAllJobs } from '../../utils/APIUtils';
 import { Markup } from 'interweave';
 import { FaPlus } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function JobCards() {
 
     const [jobs, setJobs] = useState([]);
-    const [isChanged, setIsChanged] = useState(false);
 
     useEffect(() => {
         let token = sessionStorage.getItem('authToken');
         getAllJobs(token, setJobs)
-    }, [isChanged])
+    }, [])
 
     const handleDelete = (id) => {
         let token = sessionStorage.getItem('authToken');
-        deleteJob(token, id);
-        setIsChanged(true);
+        axios.delete(`${JOBS_URL}/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+         })
+        .then(() => getAllJobs(token, setJobs))
+        .catch(err => console.log(err))
     }
 
     return (
