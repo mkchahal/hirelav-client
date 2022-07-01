@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Header from '../../components/Header/Header';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import PublicJobs from '../../components/PublicJobs/PublicJobs';
+import SignUpPage from '../../components/SignUpPage/SignUpPage';
 
 export default function LandingPage() {
 
@@ -10,12 +12,14 @@ export default function LandingPage() {
 
   return (
     <>
-      <LoginForm />
-      <div>
-        <p>New User? SignUp Below</p>
-        <Link to="/register"><button>Sign Up</button></Link>
-      </div>
-      <PublicJobs />
+      <BrowserRouter>
+        <Header />
+        <Switch>
+          <Route path='/' exact component={PublicJobs}/>
+          <Route path='/login' exact component={LoginForm}/>
+          <Route path="/register" exact component={SignUpPage} />
+        </Switch>
+      </BrowserRouter>
     </>
   )
 }

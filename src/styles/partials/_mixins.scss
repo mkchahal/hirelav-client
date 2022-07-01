@@ -11,3 +11,17 @@
         @content;
     }
 }
+
+@mixin button {
+    border: none;
+    border-radius: 2rem;
+    padding: 1.125rem 1.5rem;
+    min-width: 10rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: $font-light-color;
+
+    &:hover {
+        box-shadow: $card-shadow;
+    }
+}

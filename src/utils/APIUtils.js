@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 const PORT = 8081;
 const API_URL = `http://localhost:${PORT}`;
 const AUTH_URL = `${API_URL}/auth`;

@@ -1,5 +1,6 @@
 @import '../src/styles/partials/typography';
 @import '../src/styles/partials/variables';
+@import '../src/styles/partials/mixins';
 
 body {
     margin: 0rem;
@@ -8,8 +9,10 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-.app {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+button, a, Link {
+    cursor: pointer;
+}
+
+button {
+    @include button;
 }

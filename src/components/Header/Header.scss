@@ -1,0 +1,29 @@
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+.nav-header {
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 15rem;
+    background: $primary-theme-light;
+
+    &--right {
+        display: flex;
+        gap: 1rem;
+    }
+
+    &__logo {
+        height: 10rem;
+    }
+
+    &__btn {
+        &--login {
+            background-color: $primary-theme;
+        }
+        &--signup {
+            background-color: $secondary-theme;
+        }
+    }
+}
