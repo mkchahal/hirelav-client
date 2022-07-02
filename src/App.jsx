@@ -1,9 +1,6 @@
-import 'semantic-ui-css/semantic.min.css';
 import './App.scss';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import LandingPage from './pages/LandingPage/LandingPage';
-import SignUpPage from './components/SignUpPage/SignUpPage';
-import LoginForm from './components/LoginForm/LoginForm';
 import EditJob from './components/EditJob/EditJob';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import TaskBoard from './components/TaskBoard/TaskBoard';
