@@ -1,17 +1,17 @@
 @import '../../styles/partials/variables';
 @import '../../styles/partials/mixins';
 
-.login-form {
+.signup-form {
     background-color: #fff;
     margin-top: 6rem;
-    width: 30%;
-    min-width: 20rem;
+    width: 50%;
+    min-width: 45rem;
     border-radius: 2rem;
     box-shadow: $card-shadow;
 
     &__wrapper {
-        background: url(../../assets/images/loginBg.png);
-        background-position: bottom right;
+        background: url(../../assets/images/signupBg.png);
+        background-position: center;
         background-size: cover;
         position: fixed;
         top: 5.5rem;
@@ -55,6 +55,6 @@
 
     &__footer {
         font-size: 1.125rem;
-        margin-top: 2rem;
+        margin-top: 5rem;
     }
 }

@@ -2,19 +2,27 @@ import './App.scss';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import LandingPage from './pages/LandingPage/LandingPage';
 import EditJob from './components/EditJob/EditJob';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import TaskBoard from './components/TaskBoard/TaskBoard';
+import { useSelector } from 'react-redux';
+import { selectUser } from './features/userSlice';
 
 function App() {
+
+  const user = useSelector(selectUser);
 
   return (
     <>
       <Router>
         <Switch>
-          <Route path='/' exact component={LandingPage} />
-          <Route path='/profile' exact component={WelcomePage} />
-          <Route path='/test' exact component={TaskBoard} />
-          <Route path="/jobs/edit/:id" exact component={EditJob} />
+          <Route exact path='/' component={LandingPage} />
+          <Route exact path='/profile' render={ () => !!user ? <WelcomePage/> : <LandingPage/> } />
+          <Route exact path='/:id' component={LandingPage} />
+          <Route exact path='/profile/board' component={TaskBoard} />
+          <Route exact path='/jobs/edit/:id' component={EditJob} />
+          <Route path="*">
+            <Redirect to='/' />
+          </Route>
         </Switch>
       </Router>
     </>

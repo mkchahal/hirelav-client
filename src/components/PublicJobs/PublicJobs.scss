@@ -1,29 +1,32 @@
-@import '../../styles/partials/variables';
-
-.cards {
-    margin: 3rem;
-
-    &__heading {
-        padding-bottom: 1rem;
-        text-align: center;
+.public-jobs {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0;
+    
+    &__container {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
     }
+}
 
-    &__title {
-        text-align: center;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid $secondary-theme;
+@media(max-width:1190px) {
+    .public-jobs {
+        height: auto;
+    
+        &__container {
+            flex-wrap: wrap;
+        }
     }
+}
 
-    &__btn--share {
-        background-color: $secondary-theme;
-        border-radius: 0.25rem 0 0 0.25rem;
-        padding: 0.75rem;
-        font-weight: 400;
-    }
-
-    &__btn--apply {
-        @extend .cards__btn--share;
-        border-radius: 0 0.25rem 0.25rem 0;
-        background-color: $primary-theme;
-    }
+@media(max-width:970px) {
+    .public-jobs {
+    margin-bottom: 100px;
+}
 }

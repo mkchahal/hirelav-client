@@ -1,0 +1,17 @@
+.home {
+    position: relative;
+    top: 5rem;
+    left: 19rem;
+    width: 79%;
+    height: 100vh;
+    border-radius: 1rem;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #EDE7F6;
+
+    &--expanded {
+        @extend .home;
+        left: 0;
+        width: 98%;
+    }
+}
