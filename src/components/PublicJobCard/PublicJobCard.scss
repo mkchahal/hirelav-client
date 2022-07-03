@@ -1,7 +1,7 @@
 @import '../../styles/partials/variables';
 @import '../../styles/partials/mixins';
 
-.rec-job-card {
+.job-card {
     background-color: #ffffff;
     width: 25rem;
     height: 28rem;
@@ -11,6 +11,9 @@
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
     position: relative;
     transition: 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &:hover {
         transform: scale(1.025);

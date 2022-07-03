@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './PublicJobs.scss';
 import axios from 'axios';
 import { JOBS_URL } from '../../utils/APIUtils';
-import JobCard from '../JobCard/JobCard';
+import PublicJobCard from '../PublicJobCard/PublicJobCard';
 
 function PublicJobs() {
 
@@ -16,11 +16,11 @@ function PublicJobs() {
 
   return (
     <div className='public-jobs'>
-      <h1 className='cards__heading'>{jobs.length === 0 ? `No Job Postings yet. Please visit later.` : `${jobs.length} Open Positions`}</h1>
+      <h1>{jobs.length === 0 ? `No Job Postings yet. Please visit later.` : `${jobs.length} Open Positions`}</h1>
       <div className="public-jobs__container">
       {
         jobs.map(job =>
-          <JobCard
+          <PublicJobCard
             key={job.id}
             title={job.title}
             description={job.description}

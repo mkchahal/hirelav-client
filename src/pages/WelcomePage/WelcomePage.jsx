@@ -29,10 +29,7 @@ export default function WelcomePage() {
                 ? <AppTable />
                 : <ProfileHome />
             }
-
-            {/* <ProfileHome view={sidebarView}/> */}
-            {/* <AppTable />
-            <JobCards /> */}
+            
         </div>
     )
 }

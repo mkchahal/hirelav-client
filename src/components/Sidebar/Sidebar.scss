@@ -20,7 +20,7 @@
         @extend .sidebar;
         left: -100%;
         animation-name: hide;
-        animation-duration: 1s;
+        animation-duration: 0.3s;
     }
 
     &--show {
@@ -81,7 +81,6 @@
             color: #fff;
          }
     }
-
 }
 
 
