@@ -1,9 +1,7 @@
 import './JobCard.scss';
-import { Card } from 'react-bootstrap';
 import { Button, Icon, Label, Dropdown } from 'semantic-ui-react';
 import { JOBS_URL, getAllJobs } from '../../utils/APIUtils';
 import { Markup } from 'interweave';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default function JobCard({ job, setJobs }) {
@@ -35,11 +33,11 @@ export default function JobCard({ job, setJobs }) {
 
     return (
         <>
-            <Card key={job.id} className="rec-job-card">
+            <div key={job.id} className="rec-job-card">
                 <div className="rec-job-card__header">
                     <h2>{job.title}</h2>
                 </div>
-                <Label color={statusColor} tag style={{position: 'absolute', right: '-0.125rem', top: '5.125rem'}} > 
+                <Label color={statusColor} ribbon='right' style={{ position: 'absolute', top: '5.125rem', transform: 'translateX(-112%)' }} >
                     <Dropdown text={job.status}
                         fluid
                         options={[
@@ -51,24 +49,27 @@ export default function JobCard({ job, setJobs }) {
                     />
                 </Label>
                 <div className='rec-job-card__text'>
-                    <Markup content={job.description.slice(0, 300) + "......Read More"} />
-                    <Link to='/job/edit'>
-                        <Button animated='vertical'>
-                            <Button.Content hidden>Edit</Button.Content>
-                            <Button.Content visible>
-                                <Icon name='edit' />
-                            </Button.Content>
-                        </Button>
-                    </Link>
-                    <Button animated='vertical' onClick={() => handleDelete(job.id)}>
-                        <Button.Content hidden>Delete</Button.Content>
-                        <Button.Content visible>
-                            <Icon name='delete' />
-                        </Button.Content>
-                    </Button>
+                    <Markup content={job.description.replaceAll('p>', 'span>').slice(0, 300) + "..."} />
                 </div>
-                <p className='rec-job-card__date'><Icon name='time' /> Posted on {job.updated_at.slice(0, 10)}</p>
-            </Card>
+
+                <div className="rec-job-card__bottom">
+                    <p className='rec-job-card__date'><Icon name='time' /> Posted on {job.updated_at.slice(0, 10)}</p>
+                        <Button.Group size='large'>
+                            <Button color='blue' animated='vertical'>
+                                <Button.Content hidden>Edit</Button.Content>
+                                <Button.Content visible>
+                                    <Icon name='edit' />
+                                </Button.Content>
+                            </Button>
+                            <Button negative animated='vertical' onClick={() => handleDelete(job.id)}>
+                                <Button.Content hidden>Delete</Button.Content>
+                                <Button.Content visible>
+                                    <Icon name='delete' />
+                                </Button.Content>
+                            </Button>
+                        </Button.Group>
+                </div>
+                </div>
         </>
     )
 }

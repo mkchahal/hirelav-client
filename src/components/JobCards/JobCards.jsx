@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './JobCards.scss';
-import { Card } from 'react-bootstrap';
 import { getAllJobs } from '../../utils/APIUtils';
 import { FaPlus } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -25,9 +24,9 @@ export default function JobCards() {
                 )
                 }
                 <Link to='/job/add'>
-                    <Card border="secondary" style={{ width: '18rem' }}>
-                        <FaPlus />
-                    </Card>
+                    <div className='rec-job-card__add'>
+                        <FaPlus size={50}/>
+                    </div>
                 </Link>
             </div>
         </div>
