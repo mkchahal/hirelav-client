@@ -27,7 +27,7 @@ function Sidebar({ view }) {
         <NavLink
           className='sidebar__link'
           activeClassName="sidebar__link--active"
-          to='/profile'>
+          to='/profile' exact>
           <BiHomeHeart />
           Home
         </NavLink>
@@ -55,7 +55,7 @@ function Sidebar({ view }) {
         <NavLink
           className='sidebar__link'
           activeClassName="sidebar__link--active"
-          to='/settings'>
+          to='/profile/settings'>
           <AiOutlineSetting />
           Settings
         </NavLink>

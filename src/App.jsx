@@ -3,7 +3,6 @@ import WelcomePage from './pages/WelcomePage/WelcomePage';
 import LandingPage from './pages/LandingPage/LandingPage';
 import EditJob from './components/EditJob/EditJob';
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
-import TaskBoard from './components/TaskBoard/TaskBoard';
 import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
 
@@ -18,7 +17,7 @@ function App() {
           <Route exact path='/' component={LandingPage} />
           <Route exact path='/profile' render={ () => !!user ? <WelcomePage/> : <LandingPage/> } />
           <Route exact path='/:id' component={LandingPage} />
-          <Route exact path='/profile/board' component={TaskBoard} />
+          <Route exact path='/profile/:id' component={WelcomePage} />
           <Route exact path='/jobs/edit/:id' component={EditJob} />
           <Route path="*">
             <Redirect to='/' />
