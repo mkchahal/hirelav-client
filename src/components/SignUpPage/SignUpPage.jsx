@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { AUTH_URL } from '../../utils/APIUtlis';
+import './SignUp.scss';
+import { AUTH_URL } from '../../utils/APIUtils';
 import axios from 'axios';
-import '../LoginForm/LoginForm.scss';
+import { Form, Input } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 export default class SignUpPage extends Component {
     state = {
@@ -9,7 +11,8 @@ export default class SignUpPage extends Component {
         lastName: '',
         username: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
     }
 
     handleSignUp = (e) => {
@@ -24,7 +27,7 @@ export default class SignUpPage extends Component {
         axios
             .post(`${AUTH_URL}/signup`, newUser)
             .then(res => {
-                if(res.status === 201) {
+                if (res.status === 201) {
                     console.log("User Created Succesfully");
                     //TODO: Insert SweetAlert Here
                     this.props.history.push('/profile');
@@ -35,56 +38,76 @@ export default class SignUpPage extends Component {
 
     render() {
 
-        const { firstName, lastName, username, email, password } = this.state;
+        const { firstName, lastName, username, email, password, confirmPassword } = this.state;
+
         return (
-            <>
-                <div>
-                    <form action="submit" onSubmit={this.handleSignUp}>
-                        <label>First Name
-                            <input
-                                type="text"
-                                placeholder="firstName"
-                                value={firstName}
-                                onChange={e => this.setState({firstName: e.target.value})}
-                            />
-                        </label>
-                        <label>Last Name
-                            <input
-                                type="text"
-                                placeholder="lastName"
-                                value={lastName}
-                                onChange={e => this.setState({lastName: e.target.value})}
-                            />
-                        </label>
-                        <label>Username
-                            <input
-                                type="text"
-                                placeholder="username"
-                                value={username}
-                                onChange={e => this.setState({username: e.target.value})}
-                            />
-                        </label>
-                        <label>Email Address
-                            <input
-                                type="email"
-                                placeholder="email"
+            <div className='signup-form__wrapper'>
+                <div className='signup-form'>
+                    <div className='signup-form__header'>
+                        <h1>Join us today</h1>
+                        <p>Enter your details below to register</p>
+                    </div>
+                    <Form action="submit" onSubmit={this.handleSignUp}>
+                        <div className='signup-form__card'>
+                            <Form.Group widths='equal'>
+                                <Form.Field
+                                    id='form-input-control-first-name'
+                                    control={Input}
+                                    label='First name'
+                                    placeholder='First name'
+                                    value={firstName}
+                                    onChange={e => this.setState({ firstName: e.target.value })}
+                                />
+                                <Form.Field
+                                    id='form-input-control-last-name'
+                                    control={Input}
+                                    label='Last name'
+                                    placeholder='Last name'
+                                    value={lastName}
+                                    onChange={e => this.setState({ lastName: e.target.value })}
+                                />
+                                <Form.Field
+                                    id='form-input-control-username'
+                                    control={Input}
+                                    label='Username'
+                                    placeholder='Username'
+                                    value={username}
+                                    onChange={e => this.setState({ username: e.target.value })}
+                                />
+                            </Form.Group>
+                            <Form.Input
+                                label='Email'
+                                placeholder='joe@schmoe.com'
                                 value={email}
-                                onChange={e => this.setState({email: e.target.value})}
+                                onChange={e => this.setState({ email: e.target.value })}
                             />
-                        </label>
-                        <label>Password
-                            <input
-                                type="password"
-                                placeholder="password"
-                                autoComplete="new-password"
-                                value={password}
-                                onChange={e => this.setState({password: e.target.value})}
-                            />
-                        </label>
-                        <button>Create Profile</button>
-                    </form>
+                            <Form.Group widths='equal'>
+                                <Form.Field
+                                    control={Input}
+                                    label='Password'
+                                    placeholder='Password'
+                                    value={password}
+                                    onChange={e => this.setState({ password: e.target.value })}
+                                />
+                                <Form.Field
+                                    control={Input}
+                                    label='Confirm Password'
+                                    placeholder='Confirm Password'
+                                    value={confirmPassword}
+                                    onChange={e => this.setState({ confirmPassword: e.target.value })}
+                                />
+                            </Form.Group>
+                            <button className='signup-form__button' type='submit'>
+                                Create Profile
+                            </button>
+                            <p className='signup-form__message'>Already have an account?
+                                <Link to='/register'><strong>&nbsp;Login</strong></Link>
+                            </p>
+                        </div>
+                    </Form>
                 </div>
-            </>
+                <p className='signup-form__footer'>© 2022, made with ♥ by <strong>Mandeep K Chahal</strong>.</p>
+            </div >
         )
     }
 }

@@ -11,3 +11,20 @@
         @content;
     }
 }
+
+@mixin button {
+    border: none;
+    border-radius: 2rem;
+    padding: 1.125rem 1.5rem;
+    min-width: 10rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #673AB7;
+    background-color: #EDE7F6;
+
+    &:hover {
+        box-shadow: $card-shadow;
+        background-color: #673AB7;
+        color: #fff;
+    }
+}

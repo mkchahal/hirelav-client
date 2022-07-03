@@ -1,0 +1,34 @@
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+.header {
+    width: 100%;
+    min-height: 50rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../../assets/images/hero.jpeg");
+    background-position: 50%;
+    display: flex;
+    align-items: center;
+
+    &__content {
+        width: 40rem;
+        padding-left: 10rem;
+
+        & span {
+            color: #673AB7;
+        }
+
+        & h1 {
+            font-size: 40px;
+            margin: 0px;
+            letter-spacing: 2px;
+            color: #000000;
+        }
+    }
+
+    &__details {
+        margin-top: 3rem;
+        color: #000;
+    }
+}
