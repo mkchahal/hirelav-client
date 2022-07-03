@@ -5,6 +5,7 @@ import { AiOutlineSetting } from 'react-icons/ai';
 import { BiHomeHeart, BiSearchAlt } from 'react-icons/bi';
 import { BsPeople } from 'react-icons/bs';
 import { ImClipboard } from 'react-icons/im';
+import { VscSignOut } from 'react-icons/vsc';
 import { useDispatch } from "react-redux";
 import { logout } from "../../features/userSlice";
 
@@ -16,35 +17,55 @@ function Sidebar({ view }) {
   const handleLogout = e => {
     e.preventDefault();
 
-    dispatch(logout()); 
+    dispatch(logout());
     history.push('/');
   }
 
   return (
     <div className={`sidebar--${viewProp}`}>
       <div className="sidebar__links">
-        <NavLink to='/profile'>
+        <NavLink
+          className='sidebar__link'
+          activeClassName="sidebar__link--active"
+          to='/profile'>
           <BiHomeHeart />
           Home
         </NavLink>
-        <NavLink to='/profile/board'>
+        <NavLink
+          className='sidebar__link'
+          activeClassName="sidebar__link--active"
+          to='/profile/board'>
           <ImClipboard />
           Task Board
         </NavLink>
-        <NavLink to='/profile/jobs'>
+        <NavLink
+          className='sidebar__link'
+          activeClassName="sidebar__link--active"
+          to='/profile/jobs'>
           <BiSearchAlt />
           Job Postings
         </NavLink>
-        <NavLink to='/profile/apps'>
+        <NavLink
+          className='sidebar__link'
+          activeClassName="sidebar__link--active"
+          to='/profile/apps'>
           <BsPeople />
           Applications
         </NavLink>
-        <NavLink to='/profile'>
+        <NavLink
+          className='sidebar__link'
+          activeClassName="sidebar__link--active"
+          to='/settings'>
           <AiOutlineSetting />
           Settings
         </NavLink>
       </div>
-      <button onClick={e => handleLogout(e)}>Log Out</button>
+      <button
+        className='sidebar__logout'
+        onClick={e => handleLogout(e)}>
+        <VscSignOut />
+        Log Out
+      </button>
     </div>
   );
 }
