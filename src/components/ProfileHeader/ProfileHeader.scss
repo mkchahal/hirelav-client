@@ -10,6 +10,16 @@
     align-items: center;
     justify-content: space-between;
 
+    &__active {
+        @extend .profile-nav;
+        box-shadow: 5px 10px 30px rgba(87, 53, 216, 0.157);
+        background-color: #ffffff;
+    }
+
+    & img {
+        height: 3.5rem;
+    }
+
     &__left {
         display: flex;
         gap: 2rem;
