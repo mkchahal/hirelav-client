@@ -17,7 +17,7 @@ export default function JobCards() {
 
     return (
         <div className='jobs'>
-            <h1>{jobs.length === 0 ? `No Job Postings yet. Please visit later.` : `${jobs.length} Open Positions`}</h1>
+            <h1>{jobs.length === 0 ? `No Job Postings yet. Please visit later.` : `${jobs.length} Job Postings`} </h1>
             <div className='jobs__container'>
                 {jobs.map(job =>
                     <JobCard setJobs={setJobs} job={job} />

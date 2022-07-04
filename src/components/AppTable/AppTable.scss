@@ -1,7 +1,11 @@
+@import '../../styles/partials/variables';
+
 .app-table {
     &__wrapper {
-        margin: 8rem 4rem 0 6rem;
-        padding-bottom: 5rem;
-        float: right;
+        text-align: center;
+        background-color: $primary-theme-light;
+        border-radius: 2rem;
+        margin: 6rem 2rem 3rem 20rem;
+        padding: 2rem 4rem 3rem;
     }
 }

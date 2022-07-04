@@ -7,7 +7,6 @@
     height: 28rem;
     margin: 1.25rem;
     border-radius: 1rem;
-    overflow: hidden;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
     position: relative;
     transition: 0.3s ease-in-out;
@@ -21,7 +20,10 @@
 
     &__header {
         padding: 3rem 0;
-        width: 100%;
+        width: 90%;
+        border-radius: 2rem;
+        position: relative;
+        bottom: 1rem;
         background-color: $primary-theme-light;
         display: flex;
         align-items: center;

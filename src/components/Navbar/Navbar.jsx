@@ -17,7 +17,7 @@ export default function Navbar() {
     window.addEventListener('scroll', changeBackground);
 
   return (
-    <nav className={nav ? 'nav active' : 'nav'}>
+    <nav className={nav ? 'nav nav__active' : 'nav'}>
         <a href='/' className='logo'>
             <img src={logo} alt="hirelav logo" />
         </a>
@@ -26,12 +26,12 @@ export default function Navbar() {
             <span className='nav-icon'></span>
         </label>
         <ul className="menu">
-            <li><a href="/" className={path === '' ? 'active' : ''}>Home</a></li>
+            <li><a href="/" className={path === '' ? 'link--active' : ''}>Home</a></li>
             <li><a href="/">About</a></li>
             <li><a href="/">Job Openings</a></li>
             <li><a href="/">Contact</a></li>
-            <li><a href="/login" className={path === 'login' ? 'active' : ''}>Log In</a></li>
-            <li><a href="/register" className={path === 'register' ? 'active' : ''}>Sign Up</a></li>
+            <li><a href="/login" className={path === 'login' ? 'link--active' : ''}>Log In</a></li>
+            <li><a href="/register" className={path === 'register' ? 'link--active' : ''}>Sign Up</a></li>
         </ul>
     </nav>
   )

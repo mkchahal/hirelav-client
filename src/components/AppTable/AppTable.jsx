@@ -49,6 +49,7 @@ export default function AppTable() {
 
     return (
         <div className="app-table__wrapper">
+            <h1>Application Table</h1>
             <Table celled selectable color='violet'>
                 <Table.Header>
                     <Table.Row>
