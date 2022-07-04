@@ -5,7 +5,7 @@ import about from '../../assets/images/about.png';
 function About({ image, title, button }) {
 
     return (
-        <div className='about'>
+        <div className='about' id='about'>
             <div className="about__image">
                 <img src={about} alt="group" />
             </div>

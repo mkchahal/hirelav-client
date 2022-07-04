@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './TaskBoard.scss';
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from 'uuid';
 import { getAllApplications } from "../../utils/APIUtils";
@@ -26,8 +27,8 @@ function App() {
         items: applications.filter(app => app.status === 'Interview')
       },
       [uuidv4()]: {
-        name: "Coding Challenge",
-        items: applications.filter(app => app.status === 'Coding Challenge')
+        name: "Coding",
+        items: applications.filter(app => app.status === 'Coding')
       },
       [uuidv4()]: {
         name: "Offer",
@@ -41,35 +42,26 @@ function App() {
   }, [applications])
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
+    <div className="taskboard__wrapper">
       <DragDropContext
         onDragEnd={result => onDragEnd(result, columns, setColumns)}
       >
         {Object.entries(columns).map(([columnId, column], index) => {
           return (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center"
-              }}
-              key={columnId}
-            >
+            <div className="taskboard__column" key={columnId}>
               <h2>{column.name}</h2>
-              <div style={{ margin: 8 }}>
+              <div className="taskboard__boards">
                 <Droppable droppableId={columnId} key={columnId}>
                   {(provided, snapshot) => {
                     return (
                       <div
                         {...provided.droppableProps}
                         ref={provided.innerRef}
+                        className="taskboard__board"
                         style={{
                           background: snapshot.isDraggingOver
-                            ? "lightpink"
-                            : "lightgrey",
-                          padding: 4,
-                          width: 250,
-                          minHeight: 500
+                            ? "#4527A0"
+                            : "#B39DDB"
                         }}
                       >
                         {column.items.map((item, index) => {
@@ -85,19 +77,19 @@ function App() {
                                     ref={provided.innerRef}
                                     {...provided.draggableProps}
                                     {...provided.dragHandleProps}
+                                    className="taskboard__task"
                                     style={{
                                       userSelect: "none",
-                                      padding: 16,
-                                      margin: "0 0 8px 0",
-                                      minHeight: "50px",
                                       backgroundColor: snapshot.isDragging
-                                        ? "red"
+                                        ? "#929292"
                                         : "black",
-                                      color: "white",
                                       ...provided.draggableProps.style
                                     }}
                                   >
-                                    {item.firstName} {item.lastName}
+                                    <p>👋 {item.firstName} {item.lastName}</p>  
+                                    <p>💼 {item.job_id}</p>                               
+                                    <p>☎️ {item.phone}</p>                                    
+                                    {console.log(item)}
                                   </div>
                                 );
                               }}

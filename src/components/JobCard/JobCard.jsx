@@ -3,18 +3,48 @@ import { Button, Icon, Label, Dropdown } from 'semantic-ui-react';
 import { JOBS_URL, getAllJobs } from '../../utils/APIUtils';
 import { Markup } from 'interweave';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default function JobCard({ job, setJobs }) {
 
     const handleDelete = (id) => {
-        let token = sessionStorage.getItem('authToken');
-        axios.delete(`${JOBS_URL}/${id}`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            },
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let token = sessionStorage.getItem('authToken');
+                axios.delete(`${JOBS_URL}/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    },
+                })
+                    .then(() => getAllJobs(token, setJobs))
+                    .then(() => {
+                        Swal.fire(
+                            'Deleted!',
+                            'The job has been deleted successfully.',
+                            'success'
+                        )
+                    })
+                    .catch(err => console.log(err))
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+              ) {
+                Swal.fire(
+                  'Cancelled',
+                  'Action Cancelled.',
+                  'error'
+                )
+              }
         })
-            .then(() => getAllJobs(token, setJobs))
-            .catch(err => console.log(err))
+
     }
 
     const handleStatusChange = (event, id) => {
@@ -54,22 +84,22 @@ export default function JobCard({ job, setJobs }) {
 
                 <div className="rec-job-card__bottom">
                     <p className='rec-job-card__date'><Icon name='time' /> Posted on {job.updated_at.slice(0, 10)}</p>
-                        <Button.Group size='large'>
-                            <Button color='blue' animated='vertical'>
-                                <Button.Content hidden>Edit</Button.Content>
-                                <Button.Content visible>
-                                    <Icon name='edit' />
-                                </Button.Content>
-                            </Button>
-                            <Button negative animated='vertical' onClick={() => handleDelete(job.id)}>
-                                <Button.Content hidden>Delete</Button.Content>
-                                <Button.Content visible>
-                                    <Icon name='delete' />
-                                </Button.Content>
-                            </Button>
-                        </Button.Group>
+                    <Button.Group size='large'>
+                        <Button color='blue' animated='vertical'>
+                            <Button.Content hidden>Edit</Button.Content>
+                            <Button.Content visible>
+                                <Icon name='edit' />
+                            </Button.Content>
+                        </Button>
+                        <Button negative animated='vertical' onClick={() => handleDelete(job.id)}>
+                            <Button.Content hidden>Delete</Button.Content>
+                            <Button.Content visible>
+                                <Icon name='delete' />
+                            </Button.Content>
+                        </Button>
+                    </Button.Group>
                 </div>
-                </div>
+            </div>
         </>
     )
 }

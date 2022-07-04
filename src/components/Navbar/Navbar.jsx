@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Navbar.scss';
 import logo from '../../assets/logos/hirelav.png';
-export default function Navbar() {
+export default function Navbar(props) {
 
     const [nav, setNav] = useState(false);
     const path = window.location.pathname.slice(1);
@@ -27,7 +27,9 @@ export default function Navbar() {
         </label>
         <ul className="menu">
             <li><a href="/" className={path === '' ? 'link--active' : ''}>Home</a></li>
-            <li><a href="/">About</a></li>
+            <li><a href="/#about" onClick={()=>{
+                props.setActivePage('about')
+            }} className={`link ${props.activePage === 'about' ? 'link--active' : null}`}>About</a></li>
             <li><a href="/">Job Openings</a></li>
             <li><a href="/">Contact</a></li>
             <li><a href="/login" className={path === 'login' ? 'link--active' : ''}>Log In</a></li>
