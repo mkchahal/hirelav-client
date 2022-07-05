@@ -1,6 +1,7 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { Icon, Search } from 'semantic-ui-react';
 import logo from '../../assets/logos/hirelav.png';
+import profile from '../../assets/images/profileMandeep.png';
 import './ProfileHeader.scss';
 
 export default function ProfileHeader({ view, setView }) {
@@ -29,7 +30,7 @@ export default function ProfileHeader({ view, setView }) {
       <div className="profile-nav__right">
         <button className='profile-nav__mini'><Icon name='bell outline' size='large' /></button>
         <button className='profile-nav__user'>
-          <img src='https://t3.ftcdn.net/jpg/02/52/62/04/360_F_252620498_MTwvbrwAtAnrj0dGiNrxXsfUTdf9w5E8.jpg' alt="user" />
+          <img src={profile} alt="user" />
           <Icon name='setting' size='large' />
         </button>
       </div>

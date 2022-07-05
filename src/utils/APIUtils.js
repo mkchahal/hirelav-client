@@ -7,16 +7,16 @@ const APPLICATIONS_URL = `${API_URL}/applications`;
 
 /* -------------------------------------------------------------------------- */
 
-const getUserInfo = (token) => {
+const getUserInfo = (token, setStatus) => {
     axios
         .get(`${AUTH_URL}/profile`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         })
-        .then(response => console.log(response))
+        .then(response => setStatus(response.data))
         .catch(err => {
-            console.log(err.response);
+            console.log(err);
         });
 }
 

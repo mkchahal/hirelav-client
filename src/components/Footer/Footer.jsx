@@ -1,12 +1,13 @@
 import React from 'react';
 import './Footer.scss';
+import mail from '../../assets/images/contact.png'
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 
 function Footer() {
   return (
-    <div className='footer'>
-      <div class='footer__contact'>
+    <div className='footer' id='contact'>
+      <div className='footer__contact'>
         <div className='footer__contact--social'>
           <p>Conect with me: </p>
           <ul>
@@ -28,9 +29,14 @@ function Footer() {
           </ul>
         </div>
 
+        <div className='footer__img'>
+          <img src={mail} alt="" />
+        </div>
+
         <div className='footer__contact--address'>
-          <p>I ❤️ handwritten letters, write to me at: </p>
+          <p>I  ❤️  handwritten letters, write to me at: </p>
           <address>
+            Mandeep K Chahal <br />
             8256 18th Avenue, <br />
             Burnaby BC <br />
             V3N 1K3

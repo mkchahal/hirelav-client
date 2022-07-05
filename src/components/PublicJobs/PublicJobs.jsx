@@ -15,7 +15,7 @@ function PublicJobs() {
   }, [])
 
   return (
-    <div className='public-jobs'>
+    <div className='public-jobs' id='jobs'>
       <h1>{jobs.length === 0 ? `No Job Postings yet. Please visit later.` : `${jobs.length} Open Positions`}</h1>
       <div className="public-jobs__container">
       {

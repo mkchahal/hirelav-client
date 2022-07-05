@@ -8,9 +8,10 @@
     padding: 3rem 8rem;
 
     &__contact {
-        padding-bottom: 5rem;
+        padding-bottom: 3rem;
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
         align-items: center;
     }
 
@@ -36,6 +37,11 @@
         }
     }
 
+    &__img {
+        img {
+            height: 15rem;
+        }
+    }
     &__icons {
         list-style: none;
         margin-right: 1rem;

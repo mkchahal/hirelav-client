@@ -1,5 +1,6 @@
 @import '../src/styles/partials/typography';
 
+
 body {
     margin: 0rem;
     padding: 0rem;
@@ -9,6 +10,10 @@ body {
 * {
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 button, a, Link, NavLink {
