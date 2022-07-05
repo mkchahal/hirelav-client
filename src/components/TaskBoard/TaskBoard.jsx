@@ -5,15 +5,15 @@ import { v4 as uuidv4 } from 'uuid';
 import { getAllApplications } from "../../utils/APIUtils";
 import { onDragEnd } from "../../utils/dragDropUtils";
 
-function App() {
+function TaskBoard({ jobs }) {
   const [applications, setApplications] = useState([]);
   const [columns, setColumns] = useState({});
+  const foundJob = id => jobs.find(job => job.id === id).title;
 
   useEffect(() => {
     let token = sessionStorage.getItem('authToken');
     getAllApplications(token, setApplications);
   }, [])
-
 
   useEffect(() => {
     applications.forEach(app => app.id = String(app.id));
@@ -87,9 +87,8 @@ function App() {
                                     }}
                                   >
                                     <p>👋 {item.firstName} {item.lastName}</p>  
-                                    <p>💼 {item.job_id}</p>                               
+                                    <p>💼 {foundJob(item.job_id)}</p>                               
                                     <p>☎️ {item.phone}</p>                                    
-                                    {console.log(item)}
                                   </div>
                                 );
                               }}
@@ -110,4 +109,4 @@ function App() {
   );
 }
 
-export default App;
+export default TaskBoard;

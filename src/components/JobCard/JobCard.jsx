@@ -34,7 +34,6 @@ export default function JobCard({ job, setJobs }) {
                     })
                     .catch(err => console.log(err))
             } else if (
-                /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel
               ) {
                 Swal.fire(
@@ -49,7 +48,6 @@ export default function JobCard({ job, setJobs }) {
 
     const handleStatusChange = (event, id) => {
         let token = sessionStorage.getItem('authToken');
-        console.log(event.target.innerText);
         axios.put(`${JOBS_URL}/${id}`, { status: event.target.innerText }, {
             headers: {
                 Authorization: `Bearer ${token}`

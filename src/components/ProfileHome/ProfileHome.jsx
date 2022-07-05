@@ -59,6 +59,28 @@ export default function ProfileHome({ view, user }) {
           showForecast={false}
         />
       </div>
+      <div className='home__card--jobs'>
+        <Statistic>
+          <Statistic.Value>
+            <Icon name='search' />{user.jobs.length}
+          </Statistic.Value>
+          <Statistic.Label>Total Jobs</Statistic.Label>
+        </Statistic>
+        <Statistic.Group size='tiny'>
+          <Statistic color='green'>
+            <Statistic.Value>{countJobs('Open')}</Statistic.Value>
+            <Statistic.Label>Open</Statistic.Label>
+          </Statistic>
+          <Statistic color='yellow'>
+            <Statistic.Value>{countJobs('On Hold')}</Statistic.Value>
+            <Statistic.Label>On Hold</Statistic.Label>
+          </Statistic>
+          <Statistic color='red'>
+            <Statistic.Value>{countJobs('Closed')}</Statistic.Value>
+            <Statistic.Label>Closed</Statistic.Label>
+          </Statistic>
+        </Statistic.Group>
+      </div>
       <div className='home__card--data'>
         <div className='home__card--stats'>
         <Statistic.Group size='small'>
@@ -91,28 +113,6 @@ export default function ProfileHome({ view, user }) {
         <div className='home__card--chart'>
           <Pie style={{ height: '10rem', width: '10rem' }} data={chartData} />
         </div>
-      </div>
-      <div className='home__card--jobs'>
-        <Statistic>
-          <Statistic.Value>
-            <Icon name='search' />{user.jobs.length}
-          </Statistic.Value>
-          <Statistic.Label>Total Jobs</Statistic.Label>
-        </Statistic>
-        <Statistic.Group size='tiny'>
-          <Statistic color='green'>
-            <Statistic.Value>{countJobs('Open')}</Statistic.Value>
-            <Statistic.Label>Open</Statistic.Label>
-          </Statistic>
-          <Statistic color='yellow'>
-            <Statistic.Value>{countJobs('On Hold')}</Statistic.Value>
-            <Statistic.Label>On Hold</Statistic.Label>
-          </Statistic>
-          <Statistic color='red'>
-            <Statistic.Value>{countJobs('Closed')}</Statistic.Value>
-            <Statistic.Label>Closed</Statistic.Label>
-          </Statistic>
-        </Statistic.Group>
       </div>
     </div>
 

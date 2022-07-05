@@ -21,8 +21,6 @@ export default function WelcomePage() {
         getUserInfo(token, setUser);
     }, []);
 
-    console.log(user);
-
     return (
         <>
             {
@@ -35,11 +33,11 @@ export default function WelcomePage() {
                         !id
                             ? <ProfileHome user={user} view={sidebarView} />
                             : id === 'board'
-                                ? <TaskBoard />
+                                ? <TaskBoard jobs={user.jobs}/>
                                 : id === 'jobs'
                                     ? <JobCards />
                                     : id === 'apps'
-                                        ? <AppTable />
+                                        ? <AppTable jobs={user.jobs}/>
                                         : <ProfileHome />
                     }
 
