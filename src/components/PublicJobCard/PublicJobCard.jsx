@@ -1,11 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Markup } from 'interweave';
 import './PublicJobCard.scss';
-import { Icon } from 'semantic-ui-react';
+import { Button, Icon, Modal } from 'semantic-ui-react';
 
 function PublicJobCard({ title, description, date }) {
+
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="job-card">
+      <Modal
+        closeIcon
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <Modal.Header>{title}</Modal.Header>
+        <Modal.Content scrolling>
+          <Modal.Description>
+            <Markup content={description} />
+          </Modal.Description>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button primary onClick={() => window.location = `mailto:jobs@hirelav.com?subject=${title}: Job Application`}>
+            Apply <Icon name='paper plane' />
+          </Button>
+          <Button onClick={() => setOpen(false)} negative>
+            Close <Icon name='cancel' />
+          </Button>
+        </Modal.Actions>
+      </Modal>
       <div className="job-card__header">
         <h2>{title}</h2>
       </div>
@@ -15,7 +38,7 @@ function PublicJobCard({ title, description, date }) {
           <span>...</span>
         </div>
       </div>
-      <button>
+      <button onClick={() => setOpen(true)}>
         <Icon name='eye' />
         View
       </button>

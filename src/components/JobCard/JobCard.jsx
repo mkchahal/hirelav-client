@@ -1,11 +1,16 @@
 import './JobCard.scss';
-import { Button, Icon, Label, Dropdown } from 'semantic-ui-react';
+import { Button, Icon, Modal, Label, Dropdown } from 'semantic-ui-react';
 import { JOBS_URL, getAllJobs } from '../../utils/APIUtils';
 import { Markup } from 'interweave';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useState } from 'react';
 
 export default function JobCard({ job, setJobs }) {
+
+    const [open, setOpen] = useState(false);
+
+    const handleEditJob = () => setOpen(true);
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -35,13 +40,13 @@ export default function JobCard({ job, setJobs }) {
                     .catch(err => console.log(err))
             } else if (
                 result.dismiss === Swal.DismissReason.cancel
-              ) {
+            ) {
                 Swal.fire(
-                  'Cancelled',
-                  'Action Cancelled.',
-                  'error'
+                    'Cancelled',
+                    'Action Cancelled.',
+                    'error'
                 )
-              }
+            }
         })
 
     }
@@ -62,6 +67,26 @@ export default function JobCard({ job, setJobs }) {
     return (
         <>
             <div key={job.id} className="rec-job-card">
+                <Modal
+                    closeIcon
+                    open={open}
+                    onClose={() => setOpen(false)}
+                >
+                    <Modal.Header>{job.title}</Modal.Header>
+                    <Modal.Content scrolling>
+                        <Modal.Description>
+                            <Markup content={job.description} />
+                        </Modal.Description>
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button onClick={() => setOpen(false)} color='violet'>
+                            Apply <Icon name='cancel' />
+                        </Button>
+                        <Button onClick={() => setOpen(false)} negative>
+                            Close <Icon name='cancel' />
+                        </Button>
+                    </Modal.Actions>
+                </Modal>
                 <div className="rec-job-card__header">
                     <h2>{job.title}</h2>
                 </div>
@@ -83,7 +108,7 @@ export default function JobCard({ job, setJobs }) {
                 <div className="rec-job-card__bottom">
                     <p className='rec-job-card__date'><Icon name='time' /> Posted on {job.updated_at.slice(0, 10)}</p>
                     <Button.Group size='large'>
-                        <Button color='blue' animated='vertical'>
+                        <Button color='blue' animated='vertical' onClick={handleEditJob}>
                             <Button.Content hidden>Edit</Button.Content>
                             <Button.Content visible>
                                 <Icon name='edit' />
