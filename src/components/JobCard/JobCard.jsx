@@ -1,5 +1,5 @@
 import './JobCard.scss';
-import { Button, Icon, Modal, Label, Dropdown } from 'semantic-ui-react';
+import { Button, Icon, Modal, Label, Popup, Dropdown } from 'semantic-ui-react';
 import { JOBS_URL, getAllJobs } from '../../utils/APIUtils';
 import { Markup } from 'interweave';
 import axios from 'axios';
@@ -9,7 +9,7 @@ import { useState } from 'react';
 export default function JobCard({ job, setJobs }) {
 
     const [open, setOpen] = useState(false);
-    
+
     const handleViewJob = () => setOpen(true);
 
     const handleDelete = (id) => {
@@ -79,9 +79,13 @@ export default function JobCard({ job, setJobs }) {
                         </Modal.Description>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button onClick={() => setOpen(false)} color='violet'>
-                            Apply <Icon name='cancel' />
-                        </Button>
+                        <Popup
+                            trigger={<Button primary>Edit <Icon name='edit' /></Button>}
+                            content='This feature is coming soon. 🔜'
+                            on='click'
+                            inverted
+                            position='top right'
+                        />
                         <Button onClick={() => setOpen(false)} negative>
                             Close <Icon name='cancel' />
                         </Button>
