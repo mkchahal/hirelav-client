@@ -11,8 +11,8 @@ function About({ image, title, button }) {
             </div>
             <div className="about__text">
                 <h2> About HireLav </h2><br />
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ipsam veniam, eaque modi quod sunt quae architecto? Amet assumenda voluptas repudiandae aspernatur natus maiores, iure qui, sit soluta veritatis, dignissimos ullam est aut placeat velit!</p>
-                <button>Contact Us</button>
+                <p>HireLav provide powerful tools for recruitment solutions but not at the cost of design. Visual and intuitive design enables user to use the website without any prior training. Some additional features you would like to see? Any comments or feedback? Connect with us! 💟</p>
+                <a href='/#contact'>Contact Us</a>
             </div>
         </div>
     )

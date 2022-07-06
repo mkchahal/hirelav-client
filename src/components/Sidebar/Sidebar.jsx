@@ -17,6 +17,7 @@ function Sidebar({ view }) {
   const handleLogout = e => {
     e.preventDefault();
 
+    sessionStorage.clear();
     dispatch(logout());
     history.push('/');
   }

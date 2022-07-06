@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './WelcomePage.scss';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import LoginForm from '../../components/LoginForm/LoginForm';
 import AppTable from '../../components/AppTable/AppTable';
 import JobCards from '../../components/JobCards/JobCards';
 import ProfileHome from '../../components/ProfileHome/ProfileHome';
@@ -24,8 +24,8 @@ export default function WelcomePage() {
     return (
         <>
             {
-                user &&
-                <div className='profile'>
+                user
+                 ? <>
                     <ProfileHeader view={sidebarView} setView={setSidebarView} />
                     <Sidebar view={sidebarView} />
 
@@ -41,7 +41,8 @@ export default function WelcomePage() {
                                         : <ProfileHome />
                     }
 
-                </div>
+                </>
+                : <LoginForm />
             }
         </>
     )

@@ -67,7 +67,7 @@ export default function AppTable({ jobs }) {
 
   return (
     <div className="app-table__wrapper">
-      <h1>Application Table {Math.ceil(apps.length / 10)}</h1>
+      <h1>Application Table</h1>
       <Table color="violet">
         <Table.Header>
           <Table.Row>
@@ -121,9 +121,6 @@ export default function AppTable({ jobs }) {
         <Table.Footer>
           <Table.Row>
             <Table.HeaderCell colSpan="7">
-              <Button icon labelPosition="left" color="violet" size="small">
-                <Icon name="add" /> Add Application Manually
-              </Button>
               <Menu floated="right" pagination>
                 <Menu.Item as="a" name='1' active={page === '1'} onClick={() => setPage('1')}>
                   1
