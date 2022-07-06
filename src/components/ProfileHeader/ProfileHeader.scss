@@ -1,3 +1,5 @@
+@import '../../styles/partials/mixins';
+
 .profile-nav {
     z-index: 2;
     background-color: #fff;
@@ -9,6 +11,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    & button {
+        @include button;
+        min-width: min-content;
+        font-size: 1rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+    }
 
     &__active {
         @extend .profile-nav;
@@ -28,12 +38,6 @@
 
     &__right {
         @extend .profile-nav__left
-    }
-
-    &__mini {
-        min-width: min-content;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
     }
 
     &__user {

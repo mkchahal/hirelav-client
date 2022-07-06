@@ -3,9 +3,10 @@ import './SignUp.scss';
 import { AUTH_URL } from '../../utils/APIUtils';
 import axios from 'axios';
 import { Form, Input } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-export default class SignUpPage extends Component {
+class SignUpPage extends Component {
     state = {
         firstName: '',
         lastName: '',
@@ -17,6 +18,7 @@ export default class SignUpPage extends Component {
 
     handleSignUp = (e) => {
         e.preventDefault();
+        const { history } = this.props;
         const newUser = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -28,9 +30,13 @@ export default class SignUpPage extends Component {
             .post(`${AUTH_URL}/signup`, newUser)
             .then(res => {
                 if (res.status === 201) {
-                    console.log("User Created Succesfully");
-                    //TODO: Insert SweetAlert Here
-                    this.props.history.push('/profile');
+                    Swal.fire({
+                        title: 'User Created',
+                        text: 'New profile created. Redirecting to Login Page.',
+                        icon: 'success',
+                        timer: 2000,
+                        showConfirmButton: false
+                    }).then(history.push('/login'));
                 }
             })
             .catch(err => console.log(err));
@@ -111,4 +117,6 @@ export default class SignUpPage extends Component {
         )
     }
 }
+
+export default withRouter(SignUpPage);
 

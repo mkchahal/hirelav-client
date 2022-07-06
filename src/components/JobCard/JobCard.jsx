@@ -9,8 +9,8 @@ import { useState } from 'react';
 export default function JobCard({ job, setJobs }) {
 
     const [open, setOpen] = useState(false);
-
-    const handleEditJob = () => setOpen(true);
+    
+    const handleViewJob = () => setOpen(true);
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -108,10 +108,10 @@ export default function JobCard({ job, setJobs }) {
                 <div className="rec-job-card__bottom">
                     <p className='rec-job-card__date'><Icon name='time' /> Posted on {job.updated_at.slice(0, 10)}</p>
                     <Button.Group size='large'>
-                        <Button color='blue' animated='vertical' onClick={handleEditJob}>
-                            <Button.Content hidden>Edit</Button.Content>
+                        <Button color='violet' animated='vertical' onClick={handleViewJob}>
+                            <Button.Content hidden>View</Button.Content>
                             <Button.Content visible>
-                                <Icon name='edit' />
+                                <Icon name='eye' />
                             </Button.Content>
                         </Button>
                         <Button negative animated='vertical' onClick={() => handleDelete(job.id)}>
