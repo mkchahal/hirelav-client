@@ -53,6 +53,8 @@
     &__add {
         @extend .rec-job-card;
         justify-content: center;
+        color: #929292;
+        cursor: pointer;
     }
 
 }

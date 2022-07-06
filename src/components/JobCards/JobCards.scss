@@ -17,6 +17,13 @@
         align-content: center;
         flex-wrap: wrap;
     }
+
+    &__buttons {
+        padding-top: 1rem;
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+    }
 }
 
 @media(max-width:1190px) {
