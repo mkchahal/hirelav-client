@@ -4,18 +4,18 @@
     position: absolute;
     top: 5rem;
     left: 19rem;
-    border-radius: 1rem;
-    margin: 1rem 1rem 5rem;
+    border-radius: 2rem;
+    margin: 1rem;
     padding: 1rem;
     background-color: #EDE7F6;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     align-content: flex-start;
 
     &--expanded {
         @extend .home;
         left: 0;
-        width: 98%;
     }
 
     &__card {
