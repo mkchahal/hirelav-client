@@ -28,17 +28,24 @@ export default function ProfileHeader({ view, setView }) {
         }}><Icon name='bars' size='large' /></button>
       </div>
       <div className="profile-nav__right">
-          <Popup
-            trigger={<button><Icon name='bell outline' size='large' /></button>}
-            on='click'
-            content='No new notifications! 🎉 '
-            position='bottom right'
-            basic
-          />
-        <button className='profile-nav__user'>
-          <img src={profile} alt="user" />
-          <Icon name='setting' size='large' />
-        </button>
+        <Popup
+          trigger={<button><Icon name='bell outline' size='large' /></button>}
+          on='click'
+          content='No new notifications! 🎉 '
+          position='bottom right'
+          basic
+        />
+        <Popup
+          trigger={<button className='profile-nav__user'>
+            <img src={profile} alt="user" />
+            <Icon name='setting' size='large' />
+          </button>}
+          on='click'
+          content='This feature is coming soon. 🔜'
+          position='bottom right'
+          basic
+          inverted
+        />
       </div>
     </div>
   )

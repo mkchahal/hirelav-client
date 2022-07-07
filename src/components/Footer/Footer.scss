@@ -10,9 +10,15 @@
     &__contact {
         padding-bottom: 3rem;
         display: flex;
-        justify-content: space-between;
         flex-wrap: wrap;
         align-items: center;
+        justify-content: center;
+        
+        &--social {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+        }
     }
 
     & ul {

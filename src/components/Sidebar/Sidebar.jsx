@@ -53,13 +53,6 @@ function Sidebar({ view }) {
           <BsPeople />
           Applications
         </NavLink>
-        <NavLink
-          className='sidebar__link'
-          activeClassName="sidebar__link--active"
-          to='/profile/settings'>
-          <AiOutlineSetting />
-          Settings
-        </NavLink>
       </div>
       <button
         className='sidebar__logout'
