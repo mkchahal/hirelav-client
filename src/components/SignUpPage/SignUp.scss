@@ -1,0 +1,60 @@
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+.signup-form {
+    background-color: #fff;
+    margin-top: 6rem;
+    width: 50%;
+    min-width: 45rem;
+    border-radius: 2rem;
+    box-shadow: $card-shadow;
+
+    &__wrapper {
+        background: url(../../assets/images/signupBg.png);
+        background-position: center;
+        background-size: cover;
+        position: fixed;
+        top: 5.5rem;
+        left: 2rem;
+        right: 2rem;
+        height: 25rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 2rem;
+    }
+
+    &__header {
+        background-color: $primary-theme-dark;
+        color: #fff;
+        position: relative;
+        bottom: 2rem;
+        width: 80%;
+        margin: 0 auto;
+        box-shadow: $card-shadow;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    &__button {
+        @include button;
+        margin: 1rem 0 2.5rem;
+    }
+
+    &__message {
+        display: flex;
+        align-self: center;
+    }
+
+    &__footer {
+        font-size: 1.125rem;
+        margin-top: 5rem;
+    }
+}

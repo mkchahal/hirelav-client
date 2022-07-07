@@ -1,0 +1,106 @@
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/variables';
+
+.sidebar {
+    position: fixed;
+    background-color: $primary-theme-dark;
+    top: 5rem;
+    left: 0;
+    bottom: 0;
+    width: 15%;
+    min-width: 18rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    box-sizing: border-box;
+    margin: 1rem 0 2rem;
+    border-radius: 0 2rem 2rem 0;
+
+    &--hide {
+        @extend .sidebar;
+        left: -100%;
+        animation-name: hide;
+        animation-duration: 0.3s;
+    }
+
+    &--show {
+        @extend .sidebar;
+        left: 0;
+        animation-name: show;
+        animation-duration: 0.3s;
+    }
+
+    &__links {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+        align-items: center;
+        padding-top: 2rem;
+
+    }
+
+    &__link {
+
+        min-width: 100%;
+        padding: 1rem 4rem;
+        border-radius: 2rem;
+        margin: 1rem 0;
+        font-size: 1rem;
+        display: flex;
+        color: #929292;
+    
+        & svg {
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+        }
+    
+        &:hover {
+            color: #673AB7;
+            background-color: #EDE7F6;
+            box-shadow: 1px 1px 5px 0px rgba(87, 53, 216, 0.34);
+        }
+    
+        &--active {
+            color: #673AB7;
+            background-color: #EDE7F6;
+            box-shadow: 1px 1px 5px 0px rgba(87, 53, 216, 0.34);
+        }
+    }
+
+    &__logout {
+        @include button;
+        margin-top: 2rem;
+        background-color: #C62828;
+        color: #fff;
+        display: flex;
+        justify-content: space-evenly;
+         
+        &:hover {
+            background-color: #C62828;
+            color: #fff;
+         }
+    }
+}
+
+
+@keyframes show {
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 0;
+    }
+}
+
+@keyframes hide {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: -100%;
+    }
+}

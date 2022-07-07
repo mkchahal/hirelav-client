@@ -1,0 +1,30 @@
+@import './variables';
+
+@mixin tablet {
+    @media screen and (min-width:$tablet-width) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width:$desktop-width) {
+        @content;
+    }
+}
+
+@mixin button {
+    border: none;
+    border-radius: 2rem;
+    padding: 1.125rem 1.5rem;
+    min-width: 10rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #673AB7;
+    background-color: #EDE7F6;
+
+    &:hover {
+        box-shadow: $card-shadow;
+        background-color: #673AB7;
+        color: #fff;
+    }
+}

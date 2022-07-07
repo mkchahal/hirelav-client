@@ -1,0 +1,60 @@
+@import '../../styles/partials/mixins';
+
+.profile-nav {
+    z-index: 2;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & button {
+        @include button;
+        min-width: min-content;
+        font-size: 1rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+    }
+
+    &__active {
+        @extend .profile-nav;
+        box-shadow: 5px 10px 30px rgba(87, 53, 216, 0.157);
+        background-color: #ffffff;
+    }
+
+    & img {
+        height: 3.5rem;
+    }
+
+    &__left {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    &__right {
+        @extend .profile-nav__left
+    }
+
+    &__user {
+        background-color: #E3F2FD;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        min-width: max-content;
+        gap: 0.5rem;
+
+        & img {
+            border-radius: 50%;
+            height: 2.5rem;
+        }
+
+        &:hover {
+            background-color: #2196F3;
+        }
+    }
+}

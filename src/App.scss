@@ -1,0 +1,39 @@
+@import '../src/styles/partials/typography';
+@import 'semantic-ui-css/semantic.min.css';
+
+body {
+    margin: 0rem;
+    padding: 0rem;
+    box-sizing: border-box;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+button, a, Link, NavLink {
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+input {
+    outline: none;
+    border: none;
+}
