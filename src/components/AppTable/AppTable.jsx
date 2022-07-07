@@ -4,8 +4,6 @@ import "./AppTable.scss";
 import { APPLICATIONS_URL, getAllApplications } from "../../utils/APIUtils";
 import { Button, Dropdown, Icon, Menu, Modal, Table } from "semantic-ui-react";
 import Swal from "sweetalert2";
-import PDFViewer from 'pdf-viewer-reactjs';
-import resume from "./resume.pdf";
 
 export default function AppTable({ jobs }) {
   const [apps, setApps] = useState([]);
