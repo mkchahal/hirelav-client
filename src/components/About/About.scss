@@ -34,16 +34,12 @@
         width: 80%;
         font-size: 1.2rem;
         color: #272727;
-    
+        margin-bottom: 3rem;
     }
     
-    & button {
-        margin-top: 20px;
-        width: 140px;
-        height: 45px;
-        border-radius: 10px;
-        border: none;
-        outline: none;
+    & a {
+        border-radius: 1rem;
+        padding: 1rem 3rem;
         color: #ffffff;
         background-color: #00b7ff;
         

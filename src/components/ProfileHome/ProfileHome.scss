@@ -1,17 +1,166 @@
+@import '../../styles/partials/variables';
+
 .home {
-    position: relative;
+    position: absolute;
     top: 5rem;
     left: 19rem;
-    width: 79%;
-    height: 100vh;
-    border-radius: 1rem;
+    border-radius: 2rem;
     margin: 1rem;
     padding: 1rem;
     background-color: #EDE7F6;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
 
     &--expanded {
         @extend .home;
         left: 0;
-        width: 98%;
     }
+
+    &__card {
+        background-color: #ffffff;
+        width: 20rem;
+        height: 19.5rem;
+        margin: 1.25rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        box-shadow: rgb(50 50 50 / 50%) 0px 3px 6px 0px;
+        position: relative;
+        transition: 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &--welcome {
+            @extend .home__card;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+
+            & h1 {
+                margin: 0;
+            }
+
+            & img {
+                width: 10rem;
+                border-radius: 50%;
+                padding-bottom: 1.5rem;
+            }
+
+            & span {
+                color: #673AB7;
+            }
+
+        }
+
+        &--weather {
+            margin: 1.25rem;
+
+            & div {
+                border-radius: 1rem;
+            }
+        }
+
+        &--calendar {
+            @extend .home__card;
+            background-color: #E3F2FD;
+        }
+
+        &--data {
+            @extend .home__card;
+            flex-direction: row;
+            align-items: center;
+            width: 43.5rem;
+        }
+
+        &--chart {
+            width: 18rem;
+        }
+
+        &--stats {
+            display: flex;
+            padding-left: 1rem;
+            width: 23rem;
+        }
+
+        &--jobs {
+            @extend .home__card;
+            background-color: #FFF8E1;
+            justify-content: center;
+        }
+    }
+}
+
+//Weather Widget Styling
+
+.rw-today-current,
+.rw-today-description {
+    padding: 1rem 0;
+}
+
+//Calendar Widget Styling
+
+.react-calendar {
+
+    background-color: #E3F2FD;
+
+    & button {
+        margin: 0;
+        border: 0;
+        outline: none;
+        font: inherit;
+        font-size: 0.8em;
+    }
+
+    &__navigation {
+        display: flex;
+
+        & button {
+            min-width: 2.5rem;
+            background: none;
+        }
+    }
+
+    &__month-view {
+        &__weekdays {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.75em;
+        }
+
+        &__weekNumbers {
+            position: absolute;
+            display: none;
+
+            & div {
+                position: absolute;
+                display: none;
+            }
+        }
+
+        &__days__day {
+            &--weekend {
+                color: #d10000;
+            }
+
+            &--neighboringMonth {
+                color: #757575;
+            }
+        }
+    }
+
+    &__tile {
+        max-width: 100%;
+        text-align: center;
+        padding: 0.75em 0.5em;
+        background: none;
+
+        &--active {
+            background: #006edc;
+            color: white;
+        }
+    }
+
 }

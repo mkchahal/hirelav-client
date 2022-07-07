@@ -3,12 +3,66 @@
 .footer {
     background-color: $primary-theme-dark;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     color: #fff;
-    padding: 5rem;
+    padding: 3rem 8rem;
 
-    
+    &__contact {
+        padding-bottom: 3rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    & ul {
+        padding: 0;
+        display: flex;
+
+        & a {
+            display: block;
+            width: 3.75rem;
+            height: 3.75rem;
+            border-radius: 50%;
+            background-color: #fff;
+            color: #000;
+            text-align: center;
+            transition: .3s;
+            box-shadow: 0 5px 4px rgba(0, 0, 0, .5);
+
+            &:hover {
+                color: #fff;
+                transform: translate(0, -10%);
+            }
+        }
+    }
+
+    &__img {
+        img {
+            height: 15rem;
+        }
+    }
+    &__icons {
+        list-style: none;
+        margin-right: 1rem;
+        font-size: 30px;
+        line-height: 60px;
+        transition: .3s;
+
+        &:nth-child(1) a:hover {
+            background-color: rgba(0, 0, 0, 0.829);
+        }
+
+        &:nth-child(2) a:hover {
+            background-color: #B39DDB;
+        }
+
+        &:nth-child(3) a:hover {
+            background-color: #0077b5;;
+        }
+    }
+
+    &__text {
+        align-self: center;
+    }
 }
-

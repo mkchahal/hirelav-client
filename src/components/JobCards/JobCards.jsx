@@ -1,91 +1,88 @@
-import React, { useEffect, useState } from 'react';
-import { Card } from 'react-bootstrap';
-import { Button, Icon, Label, Dropdown } from 'semantic-ui-react';
-import { JOBS_URL, getAllJobs } from '../../utils/APIUtils';
-import { Markup } from 'interweave';
-import { FaPlus } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import "./JobCards.scss";
+import { getAllJobs, JOBS_URL } from "../../utils/APIUtils";
+import { FaPlus } from "react-icons/fa";
+import JobCard from "../JobCard/JobCard";
+import { Form, Icon, Modal } from "semantic-ui-react";
+import axios from "axios";
+import Swal from 'sweetalert2';
 
 export default function JobCards() {
-
     const [jobs, setJobs] = useState([]);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
-        let token = sessionStorage.getItem('authToken');
-        getAllJobs(token, setJobs)
-    }, [])
+        let token = sessionStorage.getItem("authToken");
+        getAllJobs(token, setJobs);
+    }, []);
 
-    const handleDelete = (id) => {
-        let token = sessionStorage.getItem('authToken');
-        axios.delete(`${JOBS_URL}/${id}`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            },
-        })
-            .then(() => getAllJobs(token, setJobs))
-            .catch(err => console.log(err))
-    }
+    const handleSubmit = (event) => {
+        event.preventDefault();
 
-    const handleStatusChange = (event, id) => {
         let token = sessionStorage.getItem('authToken');
-        console.log(event.target.innerText);
-        axios.put(`${JOBS_URL}/${id}`, { status: event.target.innerText }, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
+        axios.post(`${JOBS_URL}`, {
+            title: event.target.title.value,
+            description: event.target.description.value,
+        },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            .then(Swal.fire({
+                title: 'Successfully Posted',
+                text: 'New job has been updated.',
+                icon: 'success',
+                timer: 2000,
+                showConfirmButton: false
+            }))
             .then(() => getAllJobs(token, setJobs))
+            .then(() => setOpen(false))
             .catch(err => console.log(err.response.data))
-    }
-
-    const statusColor = (status) => {
-        return status === 'Open' ? 'green' : status === 'Closed' ? 'red' : 'orange'
-    }
+    };
 
     return (
-        <>
-            {jobs.map(job =>
-                <Card key={job.id} border="secondary" style={{ width: '18rem' }}>
-                    <Card.Header >{job.title}</Card.Header>
-                    <Label as='a' color={statusColor(job.status)} ribbon="right">
-                        <Dropdown text={job.status}
-                            fluid
-                            options={[
-                                { value: 'Open', text: 'Open' },
-                                { value: 'On Hold', text: 'On Hold' },
-                                { value: 'Closed', text: 'Closed' },
-                            ]}
-                            onChange={(event) => handleStatusChange(event, job.id)}
-                        />
-                        {/* {job.status} */}
-                    </Label>
-                    <Card.Body>
-                        <Card.Title>Posted on {job.updated_at.slice(0, 10)}</Card.Title>
-                        <Markup content={job.description.slice(0, 300) + "......Read More"} />
-                        <Link to='/job/edit'>
-                            <Button animated='vertical'>
-                                <Button.Content hidden>Edit</Button.Content>
-                                <Button.Content visible>
-                                    <Icon name='edit' />
-                                </Button.Content>
-                            </Button>
-                        </Link>
-                        <Button animated='vertical' onClick={() => handleDelete(job.id)}>
-                            <Button.Content hidden>Delete</Button.Content>
-                            <Button.Content visible>
-                                <Icon name='delete' />
-                            </Button.Content>
-                        </Button>
-                    </Card.Body>
-                </Card>
-            )
-            }
-            <Link to='/job/add'>
-                <Card border="secondary" style={{ width: '18rem' }}>
-                    <FaPlus />
-                </Card>
-            </Link>
-        </>
-    )
+        <div className="jobs">
+            <h1>
+                {jobs.length === 0
+                    ? `No Job Postings yet. Please visit later.`
+                    : `${jobs.length} Total Job Postings`}{" "}
+            </h1>
+            <div className="jobs__container">
+                {jobs.map((job) => (
+                    <JobCard setJobs={setJobs} job={job} />
+                ))}
+                <div className="rec-job-card__add" onClick={() => setOpen(true)}>
+                    <FaPlus size={50} />
+                </div>
+                <Modal closeIcon open={open} onClose={() => setOpen(false)}>
+                    <Modal.Header>Add a new job posting</Modal.Header>
+                    <Modal.Content>
+                        <Form onSubmit={(e) => handleSubmit(e)}>
+                            <Form.Input
+                                label="Job Title"
+                                placeholder="Job Title"
+                                name="title"
+                            />
+                            <Form.TextArea
+                                label="Job Description"
+                                size="large"
+                                style={{ minHeight: "25rem" }}
+                                placeholder="Job Description"
+                                name="description"
+                            />
+                            <div className="jobs__buttons">
+                                <Form.Button color="green" content="submit">
+                                    Add <Icon name="add" />
+                                </Form.Button>
+                                <Form.Button onClick={() => setOpen(false)} negative>
+                                    Close <Icon name="cancel" />
+                                </Form.Button>
+                            </div>
+                        </Form>
+                    </Modal.Content>
+                </Modal>
+            </div>
+        </div>
+    );
 }

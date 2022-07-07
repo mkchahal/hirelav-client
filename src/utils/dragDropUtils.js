@@ -21,7 +21,6 @@ const onDragEnd = (result, columns, setColumns) => {
           Authorization: `Bearer ${token}`
         }
       })
-      .then(() => console.log("Backend Updated"))
       .catch(err => console.log(err.response.data))
     setColumns({
       ...columns,

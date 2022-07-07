@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from "../../components/Navbar/Navbar";
 import About from '../../components/About/About';
@@ -11,10 +11,12 @@ import SignUpPage from '../../components/SignUpPage/SignUpPage';
 export default function LandingPage() {
 
   const { id } = useParams();
+  const [activePage, setActivePage]=useState(null)
 
   return (
     <>
-      <Navbar />
+      <Navbar activePage={activePage} setActivePage={setActivePage} />
+      {activePage}
       {
         !id
           ? <>

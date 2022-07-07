@@ -3,6 +3,7 @@
 
 .sidebar {
     position: fixed;
+    background-color: $primary-theme-dark;
     top: 5rem;
     left: 0;
     bottom: 0;
@@ -20,7 +21,7 @@
         @extend .sidebar;
         left: -100%;
         animation-name: hide;
-        animation-duration: 1s;
+        animation-duration: 0.3s;
     }
 
     &--show {
@@ -38,56 +39,51 @@
         align-items: center;
         padding-top: 2rem;
 
-        & a {
-            min-width: 100%;
-            padding: 1rem 4rem;
-            border-radius: 2rem;
-            margin: 1rem 0;
-            font-size: 1.275rem;
-            display: flex;
-            color: #929292;
-
-            & svg {
-                font-size: 1.5rem;
-                margin-right: 0.75rem;
-            }
-
-            &:hover {
-                color: #673AB7;
-                background-color: #EDE7F6;
-            }
-        }
     }
 
-    &__link--active {
-        color: #673AB7;
-        background-color: #EDE7F6;
-    }
+    &__link {
 
-
-    &__contact {
-        width: 60%;
-        background-color: $secondary-dark;
-        color: $secondary-theme;
-        height: 20%;
-        border-radius: 1rem;
+        min-width: 100%;
+        padding: 1rem 4rem;
+        border-radius: 2rem;
+        margin: 1rem 0;
+        font-size: 1rem;
         display: flex;
-        flex-direction: column;
-        padding: 1rem;
-        margin-bottom: 2rem;
-
-        & a {
-            color: $font-light-color;
-            text-decoration: none;
+        color: #929292;
+    
+        & svg {
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
         }
-
-        @include tablet {
-            margin: auto auto 2rem;
+    
+        &:hover {
+            color: #673AB7;
+            background-color: #EDE7F6;
+            box-shadow: 1px 1px 5px 0px rgba(87, 53, 216, 0.34);
         }
-
+    
+        &--active {
+            color: #673AB7;
+            background-color: #EDE7F6;
+            box-shadow: 1px 1px 5px 0px rgba(87, 53, 216, 0.34);
+        }
     }
 
+    &__logout {
+        @include button;
+        margin-top: 2rem;
+        background-color: #C62828;
+        color: #fff;
+        display: flex;
+        justify-content: space-evenly;
+         
+        &:hover {
+            background-color: #C62828;
+            color: #fff;
+         }
+    }
 }
+
 
 @keyframes show {
     from {

@@ -1,3 +1,5 @@
+@import '../../styles/partials/mixins';
+
 .profile-nav {
     z-index: 2;
     background-color: #fff;
@@ -10,6 +12,24 @@
     align-items: center;
     justify-content: space-between;
 
+    & button {
+        @include button;
+        min-width: min-content;
+        font-size: 1rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+    }
+
+    &__active {
+        @extend .profile-nav;
+        box-shadow: 5px 10px 30px rgba(87, 53, 216, 0.157);
+        background-color: #ffffff;
+    }
+
+    & img {
+        height: 3.5rem;
+    }
+
     &__left {
         display: flex;
         gap: 2rem;
@@ -18,12 +38,6 @@
 
     &__right {
         @extend .profile-nav__left
-    }
-
-    &__mini {
-        min-width: min-content;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
     }
 
     &__user {
