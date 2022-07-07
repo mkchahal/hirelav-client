@@ -2,11 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./AppTable.scss";
 import { APPLICATIONS_URL, getAllApplications } from "../../utils/APIUtils";
-import { Button, Dropdown, Icon, Menu, Table } from "semantic-ui-react";
+import { Button, Dropdown, Icon, Menu, Modal, Table } from "semantic-ui-react";
 import Swal from "sweetalert2";
+import PDFViewer from 'pdf-viewer-reactjs';
+import resume from "./resume.pdf";
 
 export default function AppTable({ jobs }) {
   const [apps, setApps] = useState([]);
+  const [open, setOpen] = useState(false);
   const [page, setPage] = useState('1');
   const displayApps = apps.slice(10 * Number(page) - 10, 10 * Number(page));
   const foundJob = (id) => jobs.find((job) => job.id === id).title;
@@ -108,6 +111,27 @@ export default function AppTable({ jobs }) {
               <Table.Cell>{app.updated_at.slice(0, 10)}</Table.Cell>
               <Table.Cell>
                 <Button
+                  onClick={() => setOpen(true)}
+                  icon="eye"
+                  color="violet"
+                  compact
+                />
+                <Modal
+                  closeIcon
+                  open={open}
+                  onClose={() => setOpen(false)}
+                >
+                  <Modal.Header>{app.firstName} {app.lastName} | {foundJob(app.job_id)}</Modal.Header>
+                  <Modal.Content scrolling>
+                  <iframe title="resume" width="100%" height="500" src="https://www.docdroid.net/5cjI7Kg/resume-pdf" frameborder="0" allowtransparency allowfullscreen></iframe>
+                  </Modal.Content>
+                  <Modal.Actions>
+                    <Button onClick={() => setOpen(false)} negative>
+                      Close <Icon name='cancel' />
+                    </Button>
+                  </Modal.Actions>
+                </Modal>
+                <Button
                   onClick={() => handleDelete(app.id)}
                   icon="delete"
                   color="red"
@@ -136,6 +160,7 @@ export default function AppTable({ jobs }) {
           </Table.Row>
         </Table.Footer>
       </Table>
+
     </div>
   );
 }

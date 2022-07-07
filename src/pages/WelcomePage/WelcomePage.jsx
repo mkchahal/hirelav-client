@@ -31,7 +31,7 @@ export default function WelcomePage() {
 
                     {
                         !id
-                            ? <ProfileHome user={user} view={sidebarView} />
+                            ? <ProfileHome user={user} setUser={setUser} view={sidebarView} />
                             : id === 'board'
                                 ? <TaskBoard jobs={user.jobs}/>
                                 : id === 'jobs'

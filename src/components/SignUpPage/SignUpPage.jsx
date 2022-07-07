@@ -107,7 +107,7 @@ class SignUpPage extends Component {
                                 Create Profile
                             </button>
                             <p className='signup-form__message'>Already have an account?
-                                <Link to='/register'><strong>&nbsp;Login</strong></Link>
+                                <Link to='/login'><strong>&nbsp;Login</strong></Link>
                             </p>
                         </div>
                     </Form>

@@ -1,7 +1,6 @@
 import './App.scss';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import LandingPage from './pages/LandingPage/LandingPage';
-import EditJob from './components/EditJob/EditJob';
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
           <Route exact path='/profile' component={WelcomePage}/>
           <Route exact path='/:id' component={LandingPage} />
           <Route exact path='/profile/:id' component={WelcomePage} />
-          <Route exact path='/jobs/edit/:id' component={EditJob} />
           <Route path="*">
             <Redirect to='/' />
           </Route>

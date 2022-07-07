@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Icon, Statistic } from 'semantic-ui-react';
 import profile from '../../assets/images/profileMandeep.png';
 import './ProfileHome.scss';
@@ -6,10 +6,11 @@ import ReactWeather, { useOpenWeather } from 'react-open-weather';
 import Calendar from 'react-calendar';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import { getUserInfo } from '../../utils/APIUtils';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export default function ProfileHome({ view, user }) {
+export default function ProfileHome({ view, user, setUser }) {
 
   const countJobs = status => user.jobs.filter(job => job.status === status).length;
   const countApps = status => user.applications.filter(app => app.status === status).length;
@@ -38,6 +39,11 @@ export default function ProfileHome({ view, user }) {
       },
     ],
   };
+
+  useEffect(() => {
+    let token = sessionStorage.getItem("authToken");
+    getUserInfo(token, setUser);
+  }, [setUser]);
 
   return (
     <div className={view ? 'home' : 'home--expanded'}>
@@ -83,7 +89,7 @@ export default function ProfileHome({ view, user }) {
       </div>
       <div className='home__card--data'>
         <div className='home__card--stats'>
-        <Statistic.Group size='small'>
+          <Statistic.Group size='small'>
             <Statistic color='grey'>
               <Statistic.Value>{countApps('Applied')}</Statistic.Value>
               <Statistic.Label>Applied</Statistic.Label>
@@ -107,8 +113,8 @@ export default function ProfileHome({ view, user }) {
             <Statistic color='violet'>
               <Statistic.Value>{countApps('Hired')}</Statistic.Value>
               <Statistic.Label>Hired</Statistic.Label>
-          </Statistic>
-        </Statistic.Group>
+            </Statistic>
+          </Statistic.Group>
         </div>
         <div className='home__card--chart'>
           <Pie style={{ height: '10rem', width: '10rem' }} data={chartData} />

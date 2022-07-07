@@ -1,0 +1,16 @@
+.App {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: linear-gradient(to bottom right, white 0%, #e6e4ff 70%);
+}
+
+img {
+  width: 25rem;
+}
+
+h1 {
+  color: #B480AA;
+}
