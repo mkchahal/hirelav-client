@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Icon, Popup } from 'semantic-ui-react';
-import logo from '../../assets/logos/hirelav.png';
+import logo from '../../assets/logos/logo.png';
 import profile from '../../assets/images/profileMandeep.png';
 import './ProfileHeader.scss';
 import { Link } from 'react-router-dom';

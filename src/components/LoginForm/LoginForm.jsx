@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { AUTH_URL, getUserInfo } from '../../utils/APIUtils';
 import axios from 'axios';
-import { Form, Message, Card } from 'semantic-ui-react';
+import { Form, Message } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../features/userSlice';
 

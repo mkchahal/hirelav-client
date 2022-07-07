@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Navbar.scss';
-import logo from '../../assets/logos/hirelav.png';
+import logo from '../../assets/logos/logo.png';
 
 export default function Navbar() {
 
