@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 export default function AppTable({ jobs }) {
   const [apps, setApps] = useState([]);
   const [open, setOpen] = useState(false);
+  const [viewApp, setViewApp] = useState(null);
   const [page, setPage] = useState('1');
   const displayApps = apps.slice(10 * Number(page) - 10, 10 * Number(page));
   const foundJob = (id) => jobs.find((job) => job.id === id).title;
@@ -49,6 +50,11 @@ export default function AppTable({ jobs }) {
       }
     });
   };
+
+  const handleView = (app) => {
+    setViewApp(app)
+    setOpen(true);
+  }
 
   const handleStatusChange = (event, id) => {
     let token = sessionStorage.getItem("authToken");
@@ -109,26 +115,11 @@ export default function AppTable({ jobs }) {
               <Table.Cell>{app.updated_at.slice(0, 10)}</Table.Cell>
               <Table.Cell>
                 <Button
-                  onClick={() => setOpen(true)}
+                  onClick={() => handleView(app)}
                   icon="eye"
                   color="violet"
                   compact
                 />
-                <Modal
-                  closeIcon
-                  open={open}
-                  onClose={() => setOpen(false)}
-                >
-                  <Modal.Header>{app.firstName} {app.lastName} | {foundJob(app.job_id)}</Modal.Header>
-                  <Modal.Content scrolling>
-                  <iframe title="resume" width="100%" height="500" src="https://www.docdroid.net/5cjI7Kg/resume-pdf" frameborder="0" allowtransparency allowfullscreen></iframe>
-                  </Modal.Content>
-                  <Modal.Actions>
-                    <Button onClick={() => setOpen(false)} negative>
-                      Close <Icon name='cancel' />
-                    </Button>
-                  </Modal.Actions>
-                </Modal>
                 <Button
                   onClick={() => handleDelete(app.id)}
                   icon="delete"
@@ -158,6 +149,25 @@ export default function AppTable({ jobs }) {
           </Table.Row>
         </Table.Footer>
       </Table>
+      {viewApp &&
+        <>
+          <Modal
+            closeIcon
+            open={open}
+            onClose={() => setOpen(false)}
+          >
+            <Modal.Header>{viewApp.firstName} {viewApp.lastName} | {foundJob(viewApp.job_id)}</Modal.Header>
+            <Modal.Content scrolling>
+              <iframe title="resume" width="100%" height="500" src="https://www.docdroid.net/5cjI7Kg/resume-pdf" frameborder="0" allowtransparency allowfullscreen></iframe>
+            </Modal.Content>
+            <Modal.Actions>
+              <Button onClick={() => setOpen(false)} negative>
+                Close <Icon name='cancel' />
+              </Button>
+            </Modal.Actions>
+          </Modal>
+        </>
+      }
 
     </div>
   );

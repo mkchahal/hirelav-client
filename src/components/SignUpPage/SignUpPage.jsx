@@ -82,6 +82,7 @@ class SignUpPage extends Component {
                                 />
                             </Form.Group>
                             <Form.Input
+                                type='email'
                                 label='Email'
                                 placeholder='joe@schmoe.com'
                                 value={email}
@@ -89,6 +90,7 @@ class SignUpPage extends Component {
                             />
                             <Form.Group widths='equal'>
                                 <Form.Field
+                                    type='password'
                                     control={Input}
                                     label='Password'
                                     placeholder='Password'
@@ -96,6 +98,7 @@ class SignUpPage extends Component {
                                     onChange={e => this.setState({ password: e.target.value })}
                                 />
                                 <Form.Field
+                                    type='password'
                                     control={Input}
                                     label='Confirm Password'
                                     placeholder='Confirm Password'

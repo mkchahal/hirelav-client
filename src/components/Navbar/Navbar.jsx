@@ -27,12 +27,12 @@ export default function Navbar() {
             <span className='nav-icon'></span>
         </label>
         <ul className="menu">
-            <li><a href="/" className={path === '' ? 'link--active' : ''}>Home</a></li>
-            <li><a href="/#about" className={path === '#about' ? 'link--active' : ''} >About</a></li>
-            <li><a href="/#jobs" className={path === '#jobs' ? 'link--active' : ''}>Job Openings</a></li>
-            <li><a href="/#contact" className={path === '#contact' ? 'link--active' : ''}>Contact</a></li>
-            <li><a href="/login" className={path === 'login' ? 'link--active' : ''}>Log In</a></li>
-            <li><a href="/register" className={path === 'register' ? 'link--active' : ''}>Sign Up</a></li>
+            <li><a href="/" className={path === '' ? 'nav__link--active' : ''}>Home</a></li>
+            <li><a href="/#about" className={path === '#about' ? 'nav__link--active' : ''} >About</a></li>
+            <li><a href="/#jobs" className={path === '#jobs' ? 'nav__link--active' : ''}>Job Openings</a></li>
+            <li><a href="/#contact" className={path === '#contact' ? 'nav__link--active' : ''}>Contact</a></li>
+            <li><a href="/login" className={path === 'login' ? 'nav__link--active' : ''}>Log In</a></li>
+            <li><a href="/register" className={path === 'register' ? 'nav__link--active' : ''}>Sign Up</a></li>
         </ul>
     </nav>
   )
