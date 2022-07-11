@@ -1,6 +1,6 @@
 import axios from 'axios';
-const PORT = 8081;
-const API_URL = `http://localhost:${PORT}`;
+// const PORT = 8081;
+const API_URL = `https://hirelav-server.herokuapp.com`;
 const AUTH_URL = `${API_URL}/auth`;
 const JOBS_URL = `${API_URL}/jobs`;
 const APPLICATIONS_URL = `${API_URL}/applications`;
