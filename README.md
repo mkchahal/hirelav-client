@@ -25,7 +25,7 @@ This repo is the frontend of the project and is deployed at [hirelav.netlify.app
 ![video demo](https://user-images.githubusercontent.com/99150991/180376338-77fe5841-bc17-4401-86b5-4e44f5964e93.png)
 
 ### Walkthrough
-https://user-images.githubusercontent.com/99150991/180376966-590302c9-3e3d-4701-8afc-1bd52532fb09.mp4
+https://user-images.githubusercontent.com/99150991/180379569-0a02cac8-7b15-4279-b771-1a4c1b728b00.mp4
 
 ## Installation
 
