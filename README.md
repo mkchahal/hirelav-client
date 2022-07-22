@@ -36,3 +36,5 @@ To Start Server:
 To Visit App:
 
 `localhost:3000`  
+
+_Note: The server URL is set to https://hirelav-server.herokuapp.com in /src/utils/APIUtils.js. If using the local server, please add the PORT number in use and update the server URL to `localhost:${PORT}`._
